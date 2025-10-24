@@ -23,7 +23,7 @@
                 <td>{{ $instructor->id }}</td>
                 <td>{{ $instructor->employee_number }}</td>
                 <td>{{ $instructor->department }}</td>
-                <td>{{ $instructor->first_name }}</td>
+                <td><a href="{{ route('instructors.show', $instructor) }}" class="text-decoration-none">{{ $instructor->first_name }}</a></td>
                 <td>{{ $instructor->last_name }}</td>
                 <td>{{ $instructor->user->email }}</td>
                 <td class="text-center">

@@ -21,7 +21,7 @@
             @foreach($students as $student)
             <tr>
                 <td>{{ $student->id }}</td>
-                <td>{{ $student->user->name }}</td>
+                <td><a href="{{ route('students.show', $student) }}" class="text-decoration-none">{{ $student->user->name }}</a></td>
                 <td>{{ $student->student_number }}</td>
                 <td>{{ $student->program->name }}</td>
                 <td>{{ $student->year_level }}</td>
