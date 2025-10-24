@@ -50,6 +50,11 @@ class GradeController extends Controller
         return redirect()->route('grades.index')->with('success', 'Grade updated successfully.');
     }
 
+    public function show(Grade $grade)
+    {
+        return view('grades.show', compact('grade'));
+    }
+
     public function destroy(Grade $grade)
     {
         $grade->delete();

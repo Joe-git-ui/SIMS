@@ -57,6 +57,11 @@ class EnrollmentController extends Controller
         return redirect()->route('enrollments.index')->with('success', 'Enrollment updated successfully.');
     }
 
+    public function show(Enrollment $enrollment)
+    {
+        return view('enrollments.show', compact('enrollment'));
+    }
+
     public function destroy(Enrollment $enrollment)
     {
         $enrollment->delete();

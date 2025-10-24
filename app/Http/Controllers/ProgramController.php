@@ -51,6 +51,11 @@ class ProgramController extends Controller
         return redirect()->route('programs.index')->with('success', 'Program updated successfully.');
     }
 
+    public function show(Program $program)
+    {
+        return view('programs.show', compact('program'));
+    }
+
     public function destroy(Program $program)
     {
         $program->delete();

@@ -92,6 +92,11 @@ class InstructorController extends Controller
         return redirect()->route('instructors.index')->with('success', 'Instructor updated successfully.');
     }
 
+    public function show(Instructor $instructor)
+    {
+        return view('instructors.show', compact('instructor'));
+    }
+
     public function destroy(Instructor $instructor)
     {
         $instructor->delete();
