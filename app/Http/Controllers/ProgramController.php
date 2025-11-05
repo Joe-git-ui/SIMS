@@ -42,7 +42,7 @@ class ProgramController extends Controller
     public function update(Request $request, Program $program)
     {
         $request->validate([
-            'code' => 'required|unique:programs,program_code,' . $program->id,
+            'code' => 'required|unique:programs,code,' . $program->id,
             'name' => 'required',
         ]);
 

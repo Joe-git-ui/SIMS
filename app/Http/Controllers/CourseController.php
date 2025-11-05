@@ -11,7 +11,7 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::with(['program','instructor'])->paginate(10);
+        $courses = Course::with(['program','instructor'])->paginate(100);
         return view('courses.index', compact('courses'));
     }
 
@@ -28,7 +28,7 @@ class CourseController extends Controller
             'program_id' => 'required|exists:programs,id',
             'instructor_id' => 'required|exists:instructors,id',
             'course_code' => 'required|unique:courses',
-            'course_name' => 'required',
+            'name' => 'required',
             'year_level' => 'required',
             'semester' => 'required',
         ]);
@@ -51,7 +51,7 @@ class CourseController extends Controller
             'program_id' => 'required|exists:programs,id',
             'instructor_id' => 'required|exists:instructors,id',
             'course_code' => 'required|unique:courses,course_code,' . $course->id,
-            'course_name' => 'required',
+            'name' => 'required',
             'year_level' => 'required',
             'semester' => 'required',
         ]);

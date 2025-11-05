@@ -22,9 +22,11 @@ use App\Http\Controllers\GradeController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('programs', ProgramController::class);
-Route::apiResource('courses', CourseController::class);
-Route::apiResource('students', StudentController::class);
-Route::apiResource('instructors', InstructorController::class);
-Route::apiResource('enrollments', EnrollmentController::class);
-Route::apiResource('grades', GradeController::class);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('api-programs', ProgramController::class);
+    Route::apiResource('api-courses', CourseController::class);
+    Route::apiResource('api-students', StudentController::class);
+    Route::apiResource('api-instructors', InstructorController::class);
+    Route::apiResource('api-enrollments', EnrollmentController::class);
+    Route::apiResource('api-grades', GradeController::class);
+});

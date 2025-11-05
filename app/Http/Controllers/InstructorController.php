@@ -30,9 +30,7 @@ class InstructorController extends Controller
             'employee_number' => 'required|unique:instructors',
             'department' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password'         => 'required|string|min:8|confirmed',
-            'first_name' => 'required|string|max:255',
-            'last_name'  => 'required|string|max:255',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
         $user = User::create([
@@ -64,7 +62,7 @@ class InstructorController extends Controller
 
     public function update(Request $request, Instructor $instructor)
     {
-        $request->validate([
+        $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name'  => 'required|string|max:255',
             'employee_number' => 'required|unique:instructors,employee_number,' . $instructor->id,
@@ -83,8 +81,9 @@ class InstructorController extends Controller
 
         $instructor->update([
             'first_name' => $validated['first_name'],
-            'last_name'  => $validated['last_name'],
+            'last_name' => $validated['last_name'],
             'employee_number' => $validated['employee_number'],
+            'department' => $validated['department'],
         ]);
 
         
